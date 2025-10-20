@@ -1,0 +1,8 @@
+//para ejecutar los test
+npm run test
+//para ejecutar el codigo
+npm run dev
+//para instalar vitest
+npm install -D vitest @testing-library/react @testing-library/jest-dom jsdom
+//apra instalar los modulos de node
+npm i
