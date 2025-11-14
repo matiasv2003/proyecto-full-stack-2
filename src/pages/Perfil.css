@@ -1,0 +1,61 @@
+/* Fondo general */
+.perfil-container {
+  background: linear-gradient(to bottom, #0f0220, #190045, #0a0030);
+  min-height: 100vh;
+  padding: 60px 40px;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Título */
+.perfil-container h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #e4d4ff;
+  text-shadow: 0 0 10px #7a3cff;
+}
+
+/* Cuadro de info principal */
+.perfil-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 30px;
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  box-shadow: 0 0 20px rgba(138, 60, 255, 0.2);
+}
+
+/* Cuadro de avatar */
+.avatar-box {
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px dashed #9b5cff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #c7a4ff;
+  text-align: center;
+}
+
+/* Texto de info */
+.info-box p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.info-box b {
+  color: #9b7dff;
+}
+
+/* Texto de abajo */
+.descripcion {
+  margin-top: 25px;
+  font-size: 15px;
+  opacity: 0.6;
+}
