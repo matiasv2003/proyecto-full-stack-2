@@ -1,8 +1,12 @@
 import { useState } from "react";
 import "./register.css";
 import { validarNombre, validarEmail, validarPassword } from "../validaciones";
+import { useNavigate } from "react-router-dom";
 
 export default function Registro() {
+
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     nombre: "",
     email: "",
@@ -21,58 +25,41 @@ export default function Registro() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ---- VALIDACIONES ----
+    // VALIDACIONES
     const errorNombre = validarNombre(form.nombre);
-    if (errorNombre) {
-      setMensaje(errorNombre);
-      return;
-    }
+    if (errorNombre) return setMensaje(errorNombre);
 
     const errorEmail = validarEmail(form.email);
-    if (errorEmail) {
-      setMensaje(errorEmail);
-      return;
-    }
+    if (errorEmail) return setMensaje(errorEmail);
 
     const errorPassword = validarPassword(form.password);
-    if (errorPassword) {
-      setMensaje(errorPassword);
-      return;
-    }
+    if (errorPassword) return setMensaje(errorPassword);
 
-    // ---- FETCH AL BACKEND ----
     try {
-      const response = await fetch("http://localhost:8080/api/users/register", {
+      const response = await fetch("http://localhost:8081/api/users/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          nombre: form.nombre,
-          email: form.email,
-          password: form.password,
-        }),
+        body: JSON.stringify(form),
       });
 
-      // Si Spring devuelve error (400, 500, etc)
       if (!response.ok) {
         let errMsg = "Error al registrar.";
-        
         try {
-          const errorData = await response.json();
-          if (errorData?.message) {
-            errMsg = errorData.message;
-          }
-        } catch (e) {}
-
-        setMensaje(errMsg);
-        return;
+          const err = await response.json();
+          if (err?.message) errMsg = err.message;
+        } catch {}
+        return setMensaje(errMsg);
       }
 
       const data = await response.json();
       console.log("Usuario registrado:", data);
 
-      setMensaje("¡Registro exitoso! 🎉");
+      setMensaje("¡Registro exitoso! 🎉 Redirigiendo...");
+
+      // 🔥 REDIRIGE AL LOGIN AUTOMÁTICAMENTE
+      setTimeout(() => navigate("/login"), 1500);
 
     } catch (error) {
       console.error("Error fetch:", error);
