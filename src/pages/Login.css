@@ -1,0 +1,85 @@
+/* Fondo con gradiente gamer */
+body {
+  background: linear-gradient(to bottom, #0f0f0f, #1a004d);
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Contenedor centrado */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px;
+  color: #fff;
+}
+
+/* Título */
+.login-title {
+  font-size: 32px;
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: #e0e0e0;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+/* Tarjeta */
+.login-card {
+  width: 380px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Formulario */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Inputs */
+.login-input {
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #aaa;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.85);
+  outline: none;
+  transition: 0.25s;
+}
+
+.login-input:focus {
+  border-color: #7b5cf0;
+  box-shadow: 0 0 8px rgba(123, 92, 240, 0.5);
+}
+
+/* Botón moderno gamer */
+.login-button {
+  background: #6346ff;
+  padding: 14px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+  box-shadow: 0 4px 12px rgba(99, 70, 255, 0.4);
+}
+
+.login-button:hover {
+  background: #7b5cff;
+  box-shadow: 0 0 15px rgba(123, 92, 255, 0.7);
+}
+
+/* Mensaje */
+.login-message {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 600;
+  color: #c8b6ff;
+}
