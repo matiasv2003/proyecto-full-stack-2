@@ -50,7 +50,7 @@ export default function Login() {
         try {
           const errorData = await response.json();
           if (errorData?.message) errMsg = errorData.message;
-        } catch { }
+        } catch {}
 
         setMensaje(errMsg);
         return;
@@ -61,9 +61,30 @@ export default function Login() {
 
       setMensaje("¡Inicio de sesión exitoso! 🎉");
 
+      // ⬇️ GUARDAR TOKEN (ya lo tenías)
       if (data.token) {
         localStorage.setItem("token", data.token);
       }
+
+      // ⬇️ GUARDAR DATOS DEL USUARIO
+      // (AJUSTA AQUÍ SEGÚN LO QUE TE RETORNE EL BACKEND)
+      if (data.usuario) {
+        localStorage.setItem("usuario", JSON.stringify(data.usuario));
+      } else {
+        // En caso de que tu backend devuelva nombre y email sueltos:
+        localStorage.setItem(
+          "usuario",
+          JSON.stringify({
+            email: form.email,
+            nombre: data.nombre || "Usuario",
+          })
+        );
+      }
+
+      // ⬇️ RECARGAR LA PÁGINA PARA QUE APAREZCA EL USUARIO EN EL NAVBAR
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000);
 
     } catch (error) {
       console.error("Error fetch:", error);
@@ -106,5 +127,4 @@ export default function Login() {
       </div>
     </div>
   );
-
 }
