@@ -18,30 +18,67 @@ export default function Registro() {
     });
   };
 
-  const handleSubmit = (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const errorNombre = validarNombre(form.nombre);
-  if (errorNombre) {
-    setMensaje(errorNombre);
-    return;
-  }
+    // ---- VALIDACIONES ----
+    const errorNombre = validarNombre(form.nombre);
+    if (errorNombre) {
+      setMensaje(errorNombre);
+      return;
+    }
 
-  const errorEmail = validarEmail(form.email);
-  if (errorEmail) {
-    setMensaje(errorEmail);
-    return;
-  }
+    const errorEmail = validarEmail(form.email);
+    if (errorEmail) {
+      setMensaje(errorEmail);
+      return;
+    }
 
-  const errorPassword = validarPassword(form.password);
-  if (errorPassword) {
-    setMensaje(errorPassword);
-    return;
-  }
+    const errorPassword = validarPassword(form.password);
+    if (errorPassword) {
+      setMensaje(errorPassword);
+      return;
+    }
 
-  setMensaje("¡Registro exitoso! 🎉");
-};
+    // ---- FETCH AL BACKEND ----
+    try {
+      const response = await fetch("http://localhost:8080/api/users/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nombre: form.nombre,
+          email: form.email,
+          password: form.password,
+        }),
+      });
 
+      // Si Spring devuelve error (400, 500, etc)
+      if (!response.ok) {
+        let errMsg = "Error al registrar.";
+        
+        try {
+          const errorData = await response.json();
+          if (errorData?.message) {
+            errMsg = errorData.message;
+          }
+        } catch (e) {}
+
+        setMensaje(errMsg);
+        return;
+      }
+
+      const data = await response.json();
+      console.log("Usuario registrado:", data);
+
+      setMensaje("¡Registro exitoso! 🎉");
+
+    } catch (error) {
+      console.error("Error fetch:", error);
+      setMensaje("No se pudo conectar con el servidor.");
+    }
+  };
 
   return (
     <div className="registro-container">
