@@ -1,3 +1,5 @@
+/* ====== NAVBAR PRINCIPAL ====== */
+
 header {
   background: linear-gradient(90deg, #0a0015, #210030, #0a0015);
   color: #fff;
@@ -66,6 +68,7 @@ nav li a:hover {
   text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
 }
 
+/* Glow animado */
 header::before {
   content: "";
   position: absolute;
@@ -81,6 +84,7 @@ header::before {
   100% { opacity: 0.9; transform: translateX(25px); }
 }
 
+/* Responsivo */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
@@ -103,4 +107,93 @@ html, body {
   margin: 0;
   padding: 0;
   background-color: #000;
+}
+
+
+/* ====== USUARIO LOGEADO ====== */
+
+.usuario-box {
+  color: #00eaff; /* Azul neon */
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  cursor: default;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+  padding: 4px 0;
+}
+
+/* Línea inferior estilo "Cerrar Sesión", pero azul */
+.usuario-box::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #00eaff, #00bcd4);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 220, 255, 0.6);
+}
+
+.usuario-box:hover {
+  color: #7eefff;
+  text-shadow: 0 0 10px #00eaff;
+}
+
+.usuario-box:hover::after {
+  width: 100%;
+}
+
+/* Ícono */
+.user-icon {
+  font-size: 20px;
+  margin-right: 6px;
+}
+
+
+
+/* ====== BOTÓN CERRAR SESIÓN ====== */
+
+.logout-btn {
+  color: #ff4b7b;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+  color: #ff85a0;
+  text-shadow: 0 0 10px #ff4b7b;
+}
+
+.logout-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #ff006e, #ff4081);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 0, 120, 0.6);
+}
+
+.logout-btn:hover::after {
+  width: 100%;
+}
+
+/* Normalizar altura de todos los items del menú */
+nav ul li,
+nav ul li a,
+.usuario-box,
+.logout-btn {
+  display: flex;
+  align-items: center;
+  height: 38px;        /* altura uniforme */
+  line-height: 38px;   /* centra el texto */
+  padding: 0 4px;      /* evita que se vean más grandes */
 }
