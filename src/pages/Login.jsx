@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./login.css"; 
+import "./login.css";
 import { validarEmail, validarPassword } from "../validaciones";
 
 export default function Login() {
@@ -20,7 +20,6 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ---- VALIDACIONES ----
     const errorEmail = validarEmail(form.email);
     if (errorEmail) {
       setMensaje(errorEmail);
@@ -33,9 +32,8 @@ export default function Login() {
       return;
     }
 
-    // ---- FETCH LOGIN ----
     try {
-        const response = await fetch("http://localhost:8080/api/auth/login", {
+      const response = await fetch("http://localhost:8080/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +50,7 @@ export default function Login() {
         try {
           const errorData = await response.json();
           if (errorData?.message) errMsg = errorData.message;
-        } catch {}
+        } catch { }
 
         setMensaje(errMsg);
         return;
@@ -63,7 +61,6 @@ export default function Login() {
 
       setMensaje("¡Inicio de sesión exitoso! 🎉");
 
-      // Guardar token si existe
       if (data.token) {
         localStorage.setItem("token", data.token);
       }
@@ -75,37 +72,39 @@ export default function Login() {
   };
 
   return (
-    <div className="registro-container">
-      <h2 className="registro-title">Iniciar Sesión</h2>
+    <div className="login-background">
+      <div className="registro-container">
+        <h2 className="registro-title">Iniciar Sesión</h2>
 
-      <div className="registro-card">
-        <form onSubmit={handleSubmit} className="registro-form">
-          
-          <input
-            type="email"
-            name="email"
-            placeholder="Correo electrónico"
-            value={form.email}
-            onChange={handleChange}
-            className="registro-input"
-          />
+        <div className="registro-card">
+          <form onSubmit={handleSubmit} className="registro-form">
+            <input
+              type="email"
+              name="email"
+              placeholder="Correo electrónico"
+              value={form.email}
+              onChange={handleChange}
+              className="registro-input"
+            />
 
-          <input
-            type="password"
-            name="password"
-            placeholder="Contraseña"
-            value={form.password}
-            onChange={handleChange}
-            className="registro-input"
-          />
+            <input
+              type="password"
+              name="password"
+              placeholder="Contraseña"
+              value={form.password}
+              onChange={handleChange}
+              className="registro-input"
+            />
 
-          <button type="submit" className="registro-button">
-            Entrar
-          </button>
+            <button type="submit" className="registro-button">
+              Entrar
+            </button>
 
-          {mensaje && <p className="registro-message">{mensaje}</p>}
-        </form>
+            {mensaje && <p className="registro-message">{mensaje}</p>}
+          </form>
+        </div>
       </div>
     </div>
   );
+
 }

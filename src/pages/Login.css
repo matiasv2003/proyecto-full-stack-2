@@ -1,22 +1,40 @@
-/* Fondo con gradiente gamer */
-body {
-  background: linear-gradient(to bottom, #0f0f0f, #1a004d);
-  margin: 0;
-  font-family: "Poppins", sans-serif;
+/* ================================
+   FONDO ANIMADO SOLO LOGIN
+=================================*/
+.login-background {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 80px;
+
+  background: linear-gradient(45deg, #0f0f0f, #1a004d, #3a00a1, #15002b);
+  background-size: 300% 300%;
+  animation: loginGradient 10s ease infinite;
 }
 
-/* Contenedor centrado */
-.login-container {
-  min-height: 100vh;
+@keyframes loginGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ================================
+   CONTENEDOR PRINCIPAL LOGIN
+=================================*/
+.registro-container {
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 80px;
   color: #fff;
 }
 
-/* Título */
-.login-title {
+/* ================================
+   TÍTULO LOGIN
+=================================*/
+.registro-title {
   font-size: 32px;
   margin-bottom: 25px;
   font-weight: 600;
@@ -24,25 +42,31 @@ body {
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
 }
 
-/* Tarjeta */
-.login-card {
+/* ================================
+   TARJETA LOGIN (Glass effect)
+=================================*/
+.registro-card {
   width: 380px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   padding: 30px;
   border-radius: 15px;
   backdrop-filter: blur(15px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* Formulario */
-.login-form {
+/* ================================
+   FORMULARIO LOGIN
+=================================*/
+.registro-form {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
-/* Inputs */
-.login-input {
+/* ================================
+   CAMPOS (Inputs)
+=================================*/
+.registro-input {
   padding: 14px;
   border-radius: 10px;
   border: 1px solid #aaa;
@@ -52,13 +76,15 @@ body {
   transition: 0.25s;
 }
 
-.login-input:focus {
+.registro-input:focus {
   border-color: #7b5cf0;
   box-shadow: 0 0 8px rgba(123, 92, 240, 0.5);
 }
 
-/* Botón moderno gamer */
-.login-button {
+/* ================================
+   BOTÓN LOGIN
+=================================*/
+.registro-button {
   background: #6346ff;
   padding: 14px;
   font-size: 18px;
@@ -71,15 +97,19 @@ body {
   box-shadow: 0 4px 12px rgba(99, 70, 255, 0.4);
 }
 
-.login-button:hover {
+.registro-button:hover {
   background: #7b5cff;
   box-shadow: 0 0 15px rgba(123, 92, 255, 0.7);
 }
 
-/* Mensaje */
-.login-message {
+/* ================================
+   MENSAJE DE VALIDACIÓN
+=================================*/
+.registro-message {
   margin-top: 10px;
   text-align: center;
   font-weight: 600;
   color: #c8b6ff;
 }
+
+

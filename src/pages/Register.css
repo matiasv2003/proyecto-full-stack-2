@@ -1,8 +1,16 @@
-/* Fondo con gradiente gamer */
+/* 🌌 FONDO ANIMADO GAMER */
 body {
-  background: linear-gradient(to bottom, #0f0f0f, #1a004d);
+  background: linear-gradient(120deg, #0f0f0f, #1a004d, #24006e);
+  background-size: 300% 300%;
+  animation: moverFondo 12s ease infinite;
   margin: 0;
   font-family: "Poppins", sans-serif;
+}
+
+@keyframes moverFondo {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Contenedor centrado */
