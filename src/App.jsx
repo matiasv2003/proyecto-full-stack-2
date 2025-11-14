@@ -2,7 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./navbar.jsx";
 import Home from "./pages/home.jsx";
 import Productos from "./pages/productos.jsx";
-import Register from "./pages/Register.jsx";  // <-- IMPORTANTE
+import Register from "./pages/Register.jsx";
+import Login from "./pages/Login.jsx"; 
+
 
 export default function App() {
   return (
@@ -12,8 +14,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/productos" element={<Productos />} />
-        <Route path="/register" element={<Register />} />  {/* <-- RUTA AGREGADA */}
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />   
       </Routes>
     </Router>
   );
 }
+
