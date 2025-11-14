@@ -15,7 +15,7 @@ export default function Navbar() {
   const cerrarSesion = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("usuario");
-    window.location.href = "/"; 
+    window.location.href = "/";
   };
 
   return (
@@ -37,16 +37,17 @@ export default function Navbar() {
           {usuario && (
             <>
               <li className="usuario-box">
-                <span className="user-icon">👤</span>
-                {usuario.nombre || usuario.email}
+                <Link to="/perfil" className="usuario-link">
+                  👤 {usuario.nombre || usuario.email}
+                </Link>
               </li>
-
 
               <li className="logout-btn" onClick={cerrarSesion}>
                 Cerrar sesión
               </li>
             </>
           )}
+
         </ul>
       </nav>
     </header>

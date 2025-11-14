@@ -197,3 +197,16 @@ nav ul li a,
   line-height: 38px;   /* centra el texto */
   padding: 0 4px;      /* evita que se vean más grandes */
 }
+
+.usuario-link {
+  color: #00eaff;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.usuario-link:hover {
+  color: #7df3ff;
+  text-shadow: 0 0 10px #00eaff;
+}

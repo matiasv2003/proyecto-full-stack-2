@@ -4,6 +4,7 @@ import Home from "./pages/home.jsx";
 import Productos from "./pages/productos.jsx";
 import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx"; 
+import Perfil from "./pages/Perfil";
 
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/productos" element={<Productos />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />   
+        <Route path="/perfil" element={<Perfil />} />
       </Routes>
     </Router>
   );
