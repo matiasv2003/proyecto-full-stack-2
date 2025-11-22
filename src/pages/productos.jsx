@@ -1,41 +1,32 @@
+import { useEffect, useState } from "react";
 import "./productos.css";
 
 export default function Productos() {
-  const productos = [
-    {
-      nombre: "Teclado Mecánico RGB",
-      precio: "$89.990",
-      imagen: "/src/assets/productos/teclado.png",
-    },
-    {
-      nombre: "Mouse Gamer 16000 DPI",
-      precio: "$59.990",
-      imagen: "/src/assets/productos/mouse.png",
-    },
-    {
-      nombre: "Auriculares Pro X",
-      precio: "$79.990",
-      imagen: "/src/assets/productos/audifonos.png",
-    },
-    {
-      nombre: "Silla Gamer RGB",
-      precio: "$199.990",
-      imagen: "/src/assets/productos/silla.png",
-    },
-  ];
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8082/api/productos")
+      .then((res) => res.json())
+      .then((data) => setProductos(data))
+      .catch((err) => console.error("Error cargando productos:", err));
+  }, []);
 
   return (
     <div className="productos-container">
       <h2 className="productos-title">Catálogo de Productos</h2>
+
       <div className="productos-grid">
-        {productos.map((p, i) => (
-          <div className="producto-item" key={i}>
-            <img src={p.imagen} alt={p.nombre} className="producto-img" />
-            <h3>{p.nombre}</h3>
-            <p>{p.precio}</p>
-            <button>Agregar al carrito</button>
-          </div>
-        ))}
+        {productos.length === 0 ? (
+          <p>Cargando productos...</p>
+        ) : (
+          productos.map((p) => (
+            <div className="producto-item" key={p.id}>
+              <h3>{p.nombre}</h3>
+              <p>${p.precio.toLocaleString()}</p>
+              <button>Agregar al carrito</button>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
